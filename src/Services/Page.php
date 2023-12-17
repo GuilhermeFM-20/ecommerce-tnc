@@ -23,7 +23,7 @@ class Page {
 		$config = array(
 		    "base_url"      => null,
 		    "tpl_dir"       =>  $_SERVER['DOCUMENT_ROOT'].$tmp_dir,
-		    "cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/resources/views-cache/",
+		    "cache_dir"     =>  $_SERVER['DOCUMENT_ROOT']."/resources/views-cache/",
 		    "debug"         => false
 		);
 
