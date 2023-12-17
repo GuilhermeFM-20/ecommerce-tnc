@@ -38,10 +38,12 @@
     <hr class="horizontal light mt-100 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <div class="input-group input-group-outline w-90  nav-link color-white">
-            <label class="form-label" style="color: aliceblue;">Buscar</label>
-            <input type="text" class="form-control color-white" style="color: aliceblue;" onfocus="focused(this)" onfocusout="defocused(this)">
+        <li class="nav-item align-items-center">
+          <div class="nav-link">
+            <div class="input-group input-group-outline my-3 text-center ">
+              <label class="form-label text-light ">Buscar</label>
+              <input type="email" class="form-control text-light">
+            </div>
           </div>
         </li>
         <li class="nav-item">
@@ -61,11 +63,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" id="Financeiro" href="/tipo">
+          <a class="nav-link text-white" id="Financeiro" href="/categoria">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Financeiro</span>
+            <span class="nav-link-text ms-1">Categoria</span>
           </a>
         </li>
         <li class="nav-item">

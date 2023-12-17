@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class TabelaTeste extends AbstractMigration
+final class TabelaCategoria extends AbstractMigration
 {
     /**
      * Change Method.
@@ -17,8 +17,15 @@ final class TabelaTeste extends AbstractMigration
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
      */
-    public function change(): void
-    {
+    public function change(): void{
+
+        $users = $this->table('categories');
+        $users->addColumn('name', 'string', ['limit' => 100])
+              ->addColumn('status', 'datetime', ['null' => true])
+              ->addColumn('created_at', 'datetime', ['null' => false])
+              ->addColumn('updated_at', 'datetime', ['null' => false])
+              ->create();
 
     }
+
 }

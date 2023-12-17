@@ -1,5 +1,5 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?>  <div class="container-fluid py-1">
-    Página/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Dashboard</h7>
+    Página/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Tipo Dashboard</h7>
   </div>
   <div class="container-fluid py-4">
     <div class="row">
@@ -64,7 +64,7 @@
                   <tbody>
                     <tr>
                       <td class=" mr-12">
-                          <p class="text-xs font-weight-bold mb-0">1254</p>
+                          <p class="text-xs font-weight-bold mb-0 ">1254</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">Centro de Custo</p>
