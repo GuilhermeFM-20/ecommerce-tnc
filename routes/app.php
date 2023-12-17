@@ -6,12 +6,12 @@ use Src\Services\Page;
 //use Slim\Routing\RouteCollectorProxy;
 
 $app->get('/login', function(){
-    $page = new Page('',[
+    $page = new Page([
         "header"=>false,
         "footer"=>false
-    ]);
+    ],'/resources/views/');
 
-    $page->setTpl('sign-in');
+    $page->setTpl('login');
 });
 
   

@@ -14,7 +14,7 @@ class Page {
 		"data"=>[]
 	];
 
-	public function __construct($tmp_dir = "",$opts = array()){
+	public function __construct($opts = array(),$tmp_dir = "/resources/views/pages/"){
 
        //echo   $_SERVER['DOCUMENT_ROOT']."/resources/views/".$tmp_dir;
 
@@ -22,15 +22,12 @@ class Page {
 
 		$config = array(
 		    "base_url"      => null,
-		    "tpl_dir"       =>  $_SERVER['DOCUMENT_ROOT']."/resources/views/pages/".$tmp_dir,
+		    "tpl_dir"       =>  $_SERVER['DOCUMENT_ROOT'].$tmp_dir,
 		    "cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/resources/views-cache/",
 		    "debug"         => false
 		);
 
 		Tpl::configure($config);
-
-        Tpl::registerPlugin(new Tpl\Plugin\PathReplace());
-
 
 		$this->tpl = new Tpl();
 
@@ -39,7 +36,6 @@ class Page {
         }
 
 		if($this->options['header']){ 
-            
             $this->tpl->draw("header", false);
         }
 
