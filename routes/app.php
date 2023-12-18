@@ -1,7 +1,7 @@
 <?php 
 
 use Src\Controllers\LoginController;
-use Src\Controllers\TypeController;
+use Src\Controllers\CategorieController;
 use Src\Services\Page;
 //use Slim\Routing\RouteCollectorProxy;
 
@@ -9,22 +9,26 @@ $app->get('/login', function(){
     $page = new Page([
         "header"=>false,
         "footer"=>false
-    ],'/resources/views/');
+    ]);
 
     $page->setTpl('login');
 });
 
-  
-$app->get('/tipo',TypeController::class);
-
-
 $app->get('/',function(){
-   $page = new Page();
-   $page->setTpl('dashboard');
-});
+    $page = new Page();
+    $page->setTpl('dashboard');
+ });
+  
 
-$app->get('/teste',function(){
-    echo "Olá, mundo! Teste";
-});
+// Categories Group
+$app->get('/categoria',CategorieController::class);
+$app->get('/categoria/create',[CategorieController::class,'viewCreate']);
+$app->post('/categoria/create',[CategorieController::class,'create']);
+$app->get('/categoria/update',CategorieController::class);
+$app->get('/categoria/delete',CategorieController::class);
+
+
+
+
 
 

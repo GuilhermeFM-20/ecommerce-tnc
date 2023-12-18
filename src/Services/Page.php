@@ -59,6 +59,13 @@ class Page {
 
 	}
 
+	public function redirect(string $route){
+
+		header("Location: $route");
+		exit;
+
+	}
+
 	public function __destruct(){
 
 		if($this->options['footer']){

@@ -17,22 +17,12 @@
                     <input type="email" class="form-control">
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-10">
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Nome</label>
                     <input type="email" class="form-control">
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="input-group input-group-outline my-3">
-                    <select class="form-control" name="tipo" id="tipo">
-                      <option value="">Tipo</option>
-                      <option value="Centro de Custo">Centro de Custo</option>
-                      <option value="Plano de Contas">Plano de Contas</option>
-                    </select>
-                  </div>
-                </div>
-              
               </div>
 
               <div class="row">
@@ -41,7 +31,7 @@
                     data-target="infoToast">Busca</button>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-12">
-                  <a href="view_create.html"><button class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button"
+                  <a href="/categoria/create"><button class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button"
                       data-target="successToast">Cadastrar</button></a>
                 </div>
                 </div>
@@ -56,33 +46,31 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-left">Código</th></th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tipo</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nome</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class=" mr-12">
-                          <p class="text-xs font-weight-bold mb-0 ">1254</p>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Centro de Custo</p>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Pacote de Aulas</p>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          <a href="view_create.html"><span class="badge badge-sm bg-gradient-info">Editar</span></a>
-                        </a>
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          <a href=""><span class="badge badge-sm bg-gradient-danger">Excluir</span></a>
-                        </a>
-                      </td>
-                    </tr>
+                    {loop="$categories"}
+                      <tr>
+                        <td>
+                            <p class="text-xs font-weight-bold ">{$value.id}</p>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold">{$value.name}</p>
+                        </td>
+                        <td class="d-flex justify-content-end">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                            data-original-title="Edit user">
+                            <a href="view_create.html"><span class="badge badge-sm bg-gradient-info">Editar</span></a>
+                          </a>
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                            data-original-title="Edit user">
+                            <a href=""><span class="badge badge-sm bg-gradient-danger">Excluir</span></a>
+                          </a>
+                        </td>
+                      </tr>
+                    {/loop}
                   </tbody>
                 </table>
               </div>
