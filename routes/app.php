@@ -5,21 +5,13 @@ use Src\Controllers\CategorieController;
 use Src\Services\Page;
 //use Slim\Routing\RouteCollectorProxy;
 
-$app->get('/login', function(){
-    $page = new Page([
-        "header"=>false,
-        "footer"=>false
-    ]);
-
-    $page->setTpl('login');
-});
+$app->get('/login', LoginController::class);
 
 $app->get('/',function(){
     $page = new Page();
     $page->setTpl('dashboard');
  });
   
-
 // Categories Group
 $app->get('/categoria',CategorieController::class);
 $app->get('/categoria/create',[CategorieController::class,'viewCreate']);

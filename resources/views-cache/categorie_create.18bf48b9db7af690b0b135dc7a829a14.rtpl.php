@@ -2,6 +2,7 @@
   Página/Categoria/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Cadastro</h7>
 </div>
 <div class="container-fluid py-4">
+  <?php require $this->checkTemplate("alert");?>
   <div class="row">
     <div class="col-12">
       <div class="card my-4">

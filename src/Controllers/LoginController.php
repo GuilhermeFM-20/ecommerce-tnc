@@ -13,7 +13,7 @@ class LoginController{
             "footer"=>false
         ]);
 
-        $page->setTpl('sign-in');
+        $page->setTpl('login');
 
     }
 

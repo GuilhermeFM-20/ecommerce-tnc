@@ -5,6 +5,7 @@ namespace Src\Models;
 class Model{
 
     private $conn;
+	const MSG = "UserMsg";
 
     public function __construct(){
 
@@ -78,6 +79,37 @@ class Model{
 
 	}
 
+	public function setData($data = array()){
+
+        foreach($data as $key => $value){
+
+            $this->{"set".$key}($value);
+
+        }
+
+    }
+
+	public static function setMessage($msg,$type){
+
+		$_SESSION[Model::MSG] = array('msg'=>$msg,'type'=>$type);
+
+	}
+
+	public static function getMessage(){
+
+		$msg = (isset($_SESSION[Model::MSG]) && $_SESSION[Model::MSG] != array()) ? $_SESSION[Model::MSG] : array();
+
+		Model::clearMessage();
+
+		return $msg;
+
+	}
+
+	public static function clearMessage(){
+
+		$_SESSION[Model::MSG] = array('msg'=>'','type'=>'');
+
+	}
 
 
 }

@@ -8,43 +8,41 @@ class CategoriesService extends Categories{
 
     public static function listAll(){
 
-        $sql = new Categories();
+        $categorie = new Categories();
 
-        return $sql->select("SELECT * FROM categories WHERE status IS NULL ORDER BY NAME");
+        return $categorie->select("SELECT * FROM categories WHERE status IS NULL ORDER BY NAME");
 
     }
 
-    // public function save(){
+    public function save(){
     
+        $categorie = new Categories();
 
-    //     $sql = new Sql();
-        
-    //     $num = $this->verifyMatricula($this->getmatricula());
+        $date = new \DateTime();
 
-    //     if($num > 0){
-    //         return false;
-    //     }
+        if(!$this->getName()){
+            return false;
+        }
 
-    //     try{
-    //         $results = $sql->query("INSERT INTO leitor VALUES(DEFAULT,:nome,:matricula,:email,:sexo,:status_leitor,:turma,:telefone) ", array(
-    //             ":nome"=>$this->getnome(),
-    //             ":matricula"=>$this->getmatricula(),
-    //             ":email"=>$this->getemail(),
-    //             ":sexo"=>$this->getsexo(),
-    //             ":status_leitor"=>'1',
-    //             ":turma"=>$this->getturma(),
-    //             ":telefone"=>$this->gettelefone()
-    //         ));
-    //         return true;
-    //     }catch(\Exception $e){
+        try{
 
-    //         return false;
+            $categorie->query("INSERT INTO categories VALUES(DEFAULT,:nome,:created,:updated) ", array(
+                ":nome" =>$this->getName(),
+                ":created" => $date->format('Y-m-d H:i'),
+                ":updated" => $date->format('Y-m-d H:i'),
+            ));
+
+            return true;
+
+        }catch(\Exception $e){
+
+            return false;
             
-    //     }
+        }
         
-    //     //$this->setData($results[0]);
 
-    // }
+
+    }
 
     // public function update($id_leitor){
     
