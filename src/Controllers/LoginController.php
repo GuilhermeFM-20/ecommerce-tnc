@@ -4,7 +4,7 @@ namespace Src\Controllers;
 
 use Src\Services\Page;
 
-class LoginController{
+class LoginController extends Controller{
 
     public function __invoke(){
         

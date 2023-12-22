@@ -55,6 +55,37 @@ class Model{
 
 	}
 
+	public function debugSql($rawQuery, $params = array()){
+
+		if (!empty($params)) {
+			$indexed = $params == array_values($params);
+			foreach($params as $k=>$v) {
+				if(is_object($v)){
+					if($v instanceof \DateTime){ 
+						$v = $v->format('Y-m-d');
+					}else{ 
+						continue;
+					}
+				}elseif(is_string($v)){
+					$v = "'$v'";
+				}elseif($v === null){ 
+					$v = 'NULL';
+				}elseif(is_array($v)){ 
+					$v = implode(',', $v);
+				}
+	
+				if($indexed){
+					$rawQuery = preg_replace('/\?/', $v, $rawQuery, 1);
+				}else{
+					if ($k[0] != ':') $k = ':'.$k; //add leading colon if it was left out
+					$rawQuery = str_replace($k,$v,$rawQuery);
+				}
+			}
+		}
+		echo $rawQuery;
+		
+	}
+
 	public function select($rawQuery, $params = array()):array{
 
 		$stmt = $this->conn->prepare($rawQuery);
@@ -88,28 +119,6 @@ class Model{
         }
 
     }
-
-	public static function setMessage($msg,$type){
-
-		$_SESSION[Model::MSG] = array('msg'=>$msg,'type'=>$type);
-
-	}
-
-	public static function getMessage(){
-
-		$msg = (isset($_SESSION[Model::MSG]) && $_SESSION[Model::MSG] != array()) ? $_SESSION[Model::MSG] : array();
-
-		Model::clearMessage();
-
-		return $msg;
-
-	}
-
-	public static function clearMessage(){
-
-		$_SESSION[Model::MSG] = array('msg'=>'','type'=>'');
-
-	}
 
 
 }

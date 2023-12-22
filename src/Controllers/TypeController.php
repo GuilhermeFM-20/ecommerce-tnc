@@ -4,7 +4,7 @@ namespace Src\Controllers;
 
 use Src\Services\Page;
 
-class TypeController {
+class TypeController extends Controller{
     
     public function __invoke(){
         $page = new Page();

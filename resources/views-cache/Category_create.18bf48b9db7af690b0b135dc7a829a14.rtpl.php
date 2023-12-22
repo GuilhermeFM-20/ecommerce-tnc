@@ -1,8 +1,7 @@
-<div class="container-fluid py-1">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="container-fluid py-1">
   Página/Categoria/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Cadastro</h7>
 </div>
 <div class="container-fluid py-4">
-  {include="alert"}
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
@@ -11,12 +10,12 @@
             <h6 class="text-white text-capitalize ps-3">Filtro de Busca</h6>
           </div>
           <div class="card-body px-0 pb-2">
-            <form action="/categoria/create" method="post">
+            <form action="<?php echo htmlspecialchars( $link, ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post">
               <div class="row">
                 <div class="col-md-4">
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Nome</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" value="<?php echo htmlspecialchars( $category["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
                 <div class="row">
@@ -33,8 +32,8 @@
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </div>
+<?php require $this->checkTemplate("alert_float");?>

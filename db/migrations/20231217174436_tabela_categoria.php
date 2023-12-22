@@ -19,7 +19,7 @@ final class TabelaCategoria extends AbstractMigration
      */
     public function change(): void{
 
-        $users = $this->table('categories');
+        $users = $this->table('category');
         $users->addColumn('name', 'string', ['limit' => 100])
               ->addColumn('status', 'datetime', ['null' => true])
               ->addColumn('created_at', 'datetime', ['null' => false])

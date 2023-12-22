@@ -2,7 +2,7 @@
 
 namespace Src\Models;
 
-class Categories extends Model{
+class Category extends Model{
 
     private $id;
     private $name;

@@ -1,7 +1,7 @@
 <?php 
 
 use Src\Controllers\LoginController;
-use Src\Controllers\CategorieController;
+use Src\Controllers\CategoryController;
 use Src\Services\Page;
 //use Slim\Routing\RouteCollectorProxy;
 
@@ -13,11 +13,12 @@ $app->get('/',function(){
  });
   
 // Categories Group
-$app->get('/categoria',CategorieController::class);
-$app->get('/categoria/create',[CategorieController::class,'viewCreate']);
-$app->post('/categoria/create',[CategorieController::class,'create']);
-$app->get('/categoria/update',CategorieController::class);
-$app->get('/categoria/delete',CategorieController::class);
+$app->get('/categoria',CategoryController::class);
+$app->get('/categoria/create',[CategoryController::class,'viewCreate']);
+$app->post('/categoria/create',[CategoryController::class,'create']);
+$app->get('/categoria/update/{id}',[CategoryController::class,'viewUpdate']);
+$app->post('/categoria/update/{id}',[CategoryController::class,'update']);
+$app->get('/categoria/delete/{id}',[CategoryController::class,'delete']);
 
 
 
