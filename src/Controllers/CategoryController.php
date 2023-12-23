@@ -10,9 +10,13 @@ class CategoryController extends Controller{
 
     public function __invoke(){
         
+        
+
         $pages = isset($_GET['page']) ? $_GET['page'] : 1;
 
         $category = new CategoryService();
+
+        $category->setData($_POST);
 
         $pagination2 = $category->getPages($pages,6);
 
@@ -23,7 +27,8 @@ class CategoryController extends Controller{
         $page->setTpl('category_search',[
             'category'=>$pagination2['data'],
             'pages'=>$pagination,
-            'alert' => self::getMessage()
+            'alert' => self::getMessage(),
+            'filter' => $_POST,
         ]);
 
     }

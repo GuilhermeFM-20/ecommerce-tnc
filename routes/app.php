@@ -13,7 +13,7 @@ $app->get('/',function(){
  });
   
 // Categories Group
-$app->get('/categoria',CategoryController::class);
+$app->map(['GET','POST'],'/categoria',CategoryController::class);
 $app->get('/categoria/create',[CategoryController::class,'viewCreate']);
 $app->post('/categoria/create',[CategoryController::class,'create']);
 $app->get('/categoria/update/{id}',[CategoryController::class,'viewUpdate']);

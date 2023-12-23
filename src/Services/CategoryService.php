@@ -84,15 +84,23 @@ class CategoryService extends Category{
 
     }
 
-    public function getPages($page = 1, $itemsForPages = 5){
+    public function getPages($page = 1, $itemsForPages = 5,$filter = ''){
+
+        if($this->getId()){
+            $filter .= " AND id = ".$this->getId();
+        }
+
+        if($this->getName()){
+            $filter .= " AND name LIKE '%".$this->getName()."%'";
+        }
 
         $start = ($page - 1) * $itemsForPages;
 
         $category = new Category();
 
-        $results = $category->select(" SELECT * FROM category WHERE status IS NULL ORDER BY id DESC LIMIT $start, $itemsForPages ");
+        $results = $category->select(" SELECT * FROM category WHERE status IS NULL $filter ORDER BY id DESC LIMIT $start, $itemsForPages ");
 
-        $resultsTotal = $category->select(" SELECT COUNT(*) AS total FROM category WHERE status IS NULL ");
+        $resultsTotal = $category->select(" SELECT COUNT(*) AS total FROM category WHERE status IS NULL $filter ");
 
         return [
             "data" => $results,

@@ -1,4 +1,6 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><footer class="footer py-4  ">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><?php require $this->checkTemplate("alert_float");?>
+<?php require $this->checkTemplate("modal");?>
+<footer class="footer py-4  ">
     <div class="container-fluid">
       <div class="row align-items-center justify-content-lg-between">
         <div class="col-lg-4 mb-lg-0 mb-4">
@@ -112,6 +114,7 @@
 </div>
   
 <!--   Core JS Files   -->
+<script src="/resources/views/assets/js/scripts.js"></script>
 <script src="/resources/views/assets/js/core/popper.min.js"></script>
 <script src="/resources/views/assets/js/core/bootstrap.min.js"></script>
 <script src="/resources/views/assets/js/plugins/perfect-scrollbar.min.js"></script>

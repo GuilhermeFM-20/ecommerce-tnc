@@ -6,16 +6,6 @@ class Controller{
 
 	const MSG = "UserMsg";
 
-	// public function setData($data = array()){
-
-    //     foreach($data as $key => $value){
-
-    //         $this->{"set".$key}($value);
-
-    //     }
-
-    // }
-
 	public static function setMessage($msg,$type){
 
 		$_SESSION[Controller::MSG] = array('msg'=>$msg,'type'=>$type);
