@@ -4,8 +4,8 @@ namespace Src\Controllers;
 
 class Controller{
 
-	const MSG = "UserMsg";
-
+	const MSG = "Msg";
+    
 	public static function setMessage($msg,$type){
 
 		$_SESSION[Controller::MSG] = array('msg'=>$msg,'type'=>$type);
@@ -44,6 +44,14 @@ class Controller{
         return $pages;
 
     }
+
+    
+	public static function redirect(string $route){
+
+		header("Location: $route");
+		exit;
+
+	}
 
 }
 

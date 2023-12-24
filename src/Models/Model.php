@@ -5,7 +5,6 @@ namespace Src\Models;
 class Model{
 
     private $conn;
-	const MSG = "UserMsg";
 
     public function __construct(){
 

@@ -3,22 +3,29 @@
 use Src\Controllers\LoginController;
 use Src\Controllers\CategoryController;
 use Src\Services\Page;
-//use Slim\Routing\RouteCollectorProxy;
+use Src\Services\UsersService;
 
 $app->get('/login', LoginController::class);
+$app->post('/login', [LoginController::class,'login']);
+$app->get('/logout', [LoginController::class,'logout']);
+
+//AuthMiddleware::verifyLogin();
 
 $app->get('/',function(){
+    UsersService::verifyLogin();
     $page = new Page();
     $page->setTpl('dashboard');
- });
-  
+});
+
 // Categories Group
-$app->map(['GET','POST'],'/categoria',CategoryController::class);
-$app->get('/categoria/create',[CategoryController::class,'viewCreate']);
-$app->post('/categoria/create',[CategoryController::class,'create']);
-$app->get('/categoria/update/{id}',[CategoryController::class,'viewUpdate']);
-$app->post('/categoria/update/{id}',[CategoryController::class,'update']);
-$app->get('/categoria/delete/{id}',[CategoryController::class,'delete']);
+$app->group('/categoria', function ($group){
+    $group->map(['GET','POST'],'',CategoryController::class);
+    $group->get('/create',[CategoryController::class,'viewCreate']);
+    $group->post('/create',[CategoryController::class,'create']);
+    $group->get('/update/{id}',[CategoryController::class,'viewUpdate']);
+    $group->post('/update/{id}',[CategoryController::class,'update']);
+    $group->get('/delete/{id}',[CategoryController::class,'delete']);
+});
 
 
 

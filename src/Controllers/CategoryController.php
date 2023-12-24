@@ -4,13 +4,13 @@ namespace Src\Controllers;
 
 use Src\Services\Page;
 use Src\Services\CategoryService;
-use Slim\Http\Request;
+use Src\Services\UsersService;
 
 class CategoryController extends Controller{
-
+    
     public function __invoke(){
-        
-        
+
+        UsersService::verifyLogin();
 
         $pages = isset($_GET['page']) ? $_GET['page'] : 1;
 
@@ -18,15 +18,15 @@ class CategoryController extends Controller{
 
         $category->setData($_POST);
 
-        $pagination2 = $category->getPages($pages,6);
+        $pagination = $category->getPages($pages,8);
 
-        $pagination = $this->verifyPages($pagination2);
+        $result = $this->verifyPages($pagination);
 
         $page = new Page();
 
         $page->setTpl('category_search',[
-            'category'=>$pagination2['data'],
-            'pages'=>$pagination,
+            'category'=>$pagination['data'],
+            'pages'=>$result,
             'alert' => self::getMessage(),
             'filter' => $_POST,
         ]);
@@ -34,6 +34,8 @@ class CategoryController extends Controller{
     }
 
     public function viewCreate(){
+
+        UsersService::verifyLogin();
 
         $page = new Page();
     
@@ -45,6 +47,8 @@ class CategoryController extends Controller{
     }
 
     public function viewUpdate($request, $response, array $args){
+
+        UsersService::verifyLogin();
         
         $category = new CategoryService();
         $page = new Page();
@@ -61,8 +65,9 @@ class CategoryController extends Controller{
 
     public function update($request, $response, array $args){
 
+        UsersService::verifyLogin();
+
         $category = new CategoryService();
-        $page = new Page();
 
         $category->setData($_POST);
 
@@ -70,19 +75,19 @@ class CategoryController extends Controller{
 
         if(!$result){
             self::setMessage('Preencha todos os campos.','warning');
-            $page->redirect('/categoria/create');
+            Controller::redirect('/categoria/create');
         }
 
         self::setMessage('Registro atualizado com sucesso.','success');
-
-        $page->redirect('/categoria');
+        Controller::redirect('/categoria');
 
     }
 
     public function create(){
+        
+        UsersService::verifyLogin();
 
         $category = new CategoryService();
-        $page = new Page();
 
         $category->setData($_POST);
 
@@ -90,30 +95,29 @@ class CategoryController extends Controller{
 
         if(!$result){
             self::setMessage('Preencha todos os campos.','warning');
-            $page->redirect('/categoria/create');
+            Controller::redirect('/categoria/create');
         }
 
         self::setMessage('Registro cadastrado com sucesso.','success');
-
-        $page->redirect('/categoria');
+        Controller::redirect('/categoria');
 
     }
 
     public function delete($request, $response, array $args){
 
+        UsersService::verifyLogin();
+
         $category = new CategoryService();
-        $page = new Page();
 
         $result = $category->delete($args['id']);
 
         if(!$result){
             self::setMessage('Não foi possível excluir o registro!','warning');
-            $page->redirect('/categoria/create');
+            Controller::redirect('/categoria/create');
         }
 
         self::setMessage('Registro excluído com sucesso.','success');
-
-        $page->redirect('/categoria');
+        Controller::redirect('/categoria');
 
     }
 
