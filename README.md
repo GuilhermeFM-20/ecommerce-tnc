@@ -15,8 +15,16 @@ E-Commerce do Grupo TNC
 - Para acessar o banco local é só alterar as configurações no arquivo .env;
 
 - As migrations estarão localizadas na pasta db/migrations;
+ 
 
-*Estrutura de arquivos do sistema*
+*Comando para rodar o Phinx*
+
+- .\phinx: esse comando quando executado no terminal, consegue acessar as funcionalidades da migration e verificar os comandos;
+
+- Para conseguir criar novas tabelas no banco verifique a documentação do Phinx:
+Link: https://book.cakephp.org/phinx/0/en/index.html
+
+# Estrutura de arquivos do sistema
 
 - O projeto seguirá o padrão MVC, com a parte de serviços separada.
 
@@ -33,18 +41,9 @@ E-Commerce do Grupo TNC
  `category_search.html`: Página do filtro de busca do módulo, onde será exibido um grid com os registros e um filtro de busca. 
  `category.html`: Será o formulário de cadastro e atualização."
 
- 
+# Select DB no sistema
 
-*Comando para rodar o Phinx*
-
-- .\phinx: esse comando quando executado no terminal, consegue acessar as funcionalidades da migration e verificar os comandos;
-
-- Para conseguir criar novas tabelas no banco verifique a documentação do Phinx:
-Link: https://book.cakephp.org/phinx/0/en/index.html
-
-*Select DB no sistema* 
-
- - Exemplo do select com as informações do banco
+ *Exemplo do select com as informações do banco*
  
 ```html
 
@@ -52,8 +51,9 @@ Link: https://book.cakephp.org/phinx/0/en/index.html
 
 ```
 
-- Exemplo do select2 com as informações do banco 
-- Obs: precisa chamar a função searchValues no arquivo `view/assets/js/script_jquery.js`, passando o id do campo e a rota da api 
+*Exemplo do select2 com as informações do banco*
+
+Precisa chamar a função searchValues no arquivo `view/assets/js/script_jquery.js`, passando o id do campo e a rota da api 
 
 ```html
 <div class="form-control pt-1 p-04">
