@@ -16,12 +16,57 @@ E-Commerce do Grupo TNC
 
 - As migrations estarão localizadas na pasta db/migrations;
 
+*Estrutura de arquivos do sistema*
+
+- O projeto seguirá o padrão MVC, com a parte de serviços separada.
+
+- Cada módulo terá seu próprio arquivo nas pastas dentro do diretório `\src`.
+
+-Exemplo: A categoria terá
+`src/Controller/CategoryController.php`: Apenas os controles que serão chamados pelas rotas do arquivo routes/app.php.
+`src/Models/Category.php`: Serão organizados os getters e setters simulando os dados da base de dados.
+`src/Services/CategoryService.php`: Conterão os métodos principais para manipular os dados.
+
+ - Para a parte de visualização que está na pasta `resources/views/pages/`
+ - Nesse caminho ficarão os arquivos html das páginas.
+ Sempre seguirão o padrão:
+ `category_search.html`: Página do filtro de busca do módulo, onde será exibido um grid com os registros e um filtro de busca. 
+ `category.html`: Será o formulário de cadastro e atualização."
+
+ 
+
 *Comando para rodar o Phinx*
 
 - .\phinx: esse comando quando executado no terminal, consegue acessar as funcionalidades da migration e verificar os comandos;
 
 - Para conseguir criar novas tabelas no banco verifique a documentação do Phinx:
 Link: https://book.cakephp.org/phinx/0/en/index.html
+
+*Select DB no sistema* 
+
+ - Exemplo do select com as informações do banco
+ 
+```html
+
+<select class="form-control" id="nome_campo" onclick="changeValues('nome_campo','api/load/nome_campo');"></select>
+
+```
+
+- Exemplo do select2 com as informações do banco 
+- Obs: precisa chamar a função searchValues no arquivo `view/assets/js/script_jquery.js`, passando o id do campo e a rota da api 
+
+```html
+<div class="form-control pt-1 p-04">
+	<select class="form-control" id="nome_campo" name="nome_campo" ></select>
+</div> 
+
+```
+- Exemplo no arquivo: script_jquery.js
+
+```js
+searchValues('nome_campo','api/load/nome_campo');
+
+```
 
 
 
