@@ -25,10 +25,6 @@ class Category extends Model{
         return $this->name;
     }
 
-    public function setStatus(string $status){
-        $this->status = $status;
-    }
-
     public function setCreated(string $created){
         $this->created = $created;
     }

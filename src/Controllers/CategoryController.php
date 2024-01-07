@@ -10,6 +10,8 @@ class CategoryController extends Controller{
     
     public function __invoke(){
 
+        //print_r($_POST);exit;
+
         UsersService::verifyLogin();
 
         $pages = isset($_GET['page']) ? $_GET['page'] : 1;

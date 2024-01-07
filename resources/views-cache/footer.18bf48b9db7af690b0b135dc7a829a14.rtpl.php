@@ -1,5 +1,6 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><?php require $this->checkTemplate("alert_float");?>
 <?php require $this->checkTemplate("modal");?>
+
 <footer class="footer py-4  ">
     <div class="container-fluid">
       <div class="row align-items-center justify-content-lg-between">
@@ -114,12 +115,15 @@
 </div>
   
 <!--   Core JS Files   -->
+<script src="/resources/views/assets/js/scripts_jquery.js"></script>
 <script src="/resources/views/assets/js/scripts.js"></script>
 <script src="/resources/views/assets/js/core/popper.min.js"></script>
 <script src="/resources/views/assets/js/core/bootstrap.min.js"></script>
 <script src="/resources/views/assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/resources/views/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/resources/views/assets/js/plugins/chartjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 <script>
   var ctx = document.getElementById("chart-bars").getContext("2d");
 
