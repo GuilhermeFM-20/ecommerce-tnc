@@ -18,27 +18,16 @@
                     <input type="text" name="id" value="<?php echo htmlspecialchars( $filter["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-10">
                   <div class="input-group input-group-outline my-3 is-filled">
                     <label class="form-label">Nome</label>
-                    <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select>
+                    <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
                     <!-- <div class="form-control pt-1 p-04">
                       <select class="form-control" id="category" name="category" ></select>
                     </div> -->
-                    <!-- <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control"> -->
+                    <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
-              
-              <div class="col-md-5">
-                <div class="input-group input-group-outline my-3 is-filled">
-                  <label class="form-label">Nome</label>
-                  <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
-                  <div class="form-control pt-1 p-04">
-                    <select class="form-control" id="category" name="category" ></select>
-                  </div>
-                  <!-- <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control"> -->
-                </div>
-              </div>
             </div>
 
               <div class="row">

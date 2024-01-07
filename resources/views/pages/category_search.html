@@ -18,27 +18,21 @@
                     <input type="text" name="id" value="{$filter.id}" class="form-control">
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-10">
                   <div class="input-group input-group-outline my-3 is-filled">
                     <label class="form-label">Nome</label>
-                    <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select>
+                    <!-- Exemplo do select com as informações do banco -->
+                    <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
+
+                    <!-- Exemplo do select2 com as informações do banco -->
+                    <!-- Obs: precisa chamar a função searchValues passando o id do campo e a rota da api -->
                     <!-- <div class="form-control pt-1 p-04">
                       <select class="form-control" id="category" name="category" ></select>
                     </div> -->
-                    <!-- <input type="text" name="name" value="{$filter.name}" class="form-control"> -->
+
+                    <input type="text" name="name" value="{$filter.name}" class="form-control">
                   </div>
                 </div>
-              
-              <div class="col-md-5">
-                <div class="input-group input-group-outline my-3 is-filled">
-                  <label class="form-label">Nome</label>
-                  <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
-                  <div class="form-control pt-1 p-04">
-                    <select class="form-control" id="category" name="category" ></select>
-                  </div>
-                  <!-- <input type="text" name="name" value="{$filter.name}" class="form-control"> -->
-                </div>
-              </div>
             </div>
 
               <div class="row">
