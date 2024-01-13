@@ -4022,7 +4022,7 @@ textarea.form-control-lg {
   margin-left: -1px; }
 
 .page-item.active .page-link {
-  z-index: 3;
+  z-index: 2;
   color: #fff;
   background-color: #1F8EF3;
   border-color: #1F8EF3; }

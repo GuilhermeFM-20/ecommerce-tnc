@@ -27,14 +27,58 @@ async function changeValues(id,route,limit){
     
 }
 
-function searchValues(id,route){
+async function inputSelect(id,route,input){
 
-    var script = document.createElement('script');
-    let select = document.getElementById(id);
+    console.log('entrou');
 
-    select.options[select.options.length] = new Option('', '');
-    script.innerHTML = "$.ajax({url: '"+route+"',method: 'POST', dataType: 'json', success: function (data) { const newArray = data.data.map(item => { return { id: item.id, text: item.name,};});console.log(newArray);$('#"+id+"').select2({data: newArray,placeholder: 'Selecione uma opção...'});}});";
+    let div = document.getElementById('div_'+id);
+
+    div.innerHTML = `<ul class="dropdown-menu hide " style="top: 90%;z-index:99999; border:3px solid #1F8EF3; border-top:1px solid #ced4da;" id="busca_category"></ul>
+    <input type="hidden" name="campo" id="cod_category">`;
+
+    const data = await fetch(route,{
+        method: 'POST',
+        headers: {"Content-type": "application/json;charset=UTF-8"},
+        body: JSON.stringify({value: input.value,limit:10})
+    });
+
+    const response = await data.json();
+
+    $('#busca_'+id).empty();
+
+    if(response.status){
+
+        $('#busca_'+id).attr('class','dropdown-menu show col-12');
+        for (const item of response.data) {
+            $('#busca_'+id).append(`<li class="dropdown-item"> <div class="col-12 d-flex justify-content-between align-items-center pe-auto" onclick="searchValues('${id}',${item.id},'${item.name}')">   <a href="#" class="pe-auto">${item.name}</a>   </div>     </li>`); 
+        }
+
+    }else{
+
+        $('#busca_'+id).append('Nenhum registro encontrado...');
+        
+    }
     
-    document.body.appendChild(script);
+}
+
+function searchValues(input,id,name){
+
+    let text = document.getElementById(input);  
+    let hidden = document.getElementById('cod_'+input);
+    let busca = document.getElementById('busca_'+input);
+
+    text.value = name;
+    hidden.value = id;
+    busca.setAttribute("class","dropdown-menu hide col-12");
 
 }
+
+
+function emptySearch(input){
+    if(input.value == ''){
+    let busca = document.getElementById('busca_'+input.id);
+    busca.setAttribute("class","dropdown-menu hide col-12");
+    document.getElementById(input.id).value = '';
+    }
+}
+

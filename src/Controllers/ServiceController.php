@@ -11,10 +11,10 @@ class ServiceController extends Controller{
     public function loadCategories(ServerRequestInterface $request, ResponseInterface $response, array $args){
 
         $data = $request->getParsedBody();
-        
+
         $categories = new CategoryService();
 
-        $results = $categories->listAll($data['limit']);
+        $results = $categories->listAll($data);
         
         $response = ['status' => true,
                      'data' => $results];

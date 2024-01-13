@@ -242,5 +242,6 @@
       </div>
     </nav>
     <script id="select2"></script>
-    <script src="/resources/views/assets/js/scripts.js"></script>
+    <!-- <script src="/resources/views/assets/js/scripts.js?1"></script>
+    <script src="/resources/views/assets/js/scripts_jquery.js?2"></script> -->
     <!-- End Navbar -->

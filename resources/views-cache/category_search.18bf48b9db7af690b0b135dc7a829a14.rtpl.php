@@ -21,11 +21,15 @@
                 <div class="col-md-10">
                   <div class="input-group input-group-outline my-3 is-filled">
                     <label class="form-label">Nome</label>
+                    <!-- Exemplo do select com as informações do banco -->
                     <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
-                    <!-- <div class="form-control pt-1 p-04">
-                      <select class="form-control" id="category" name="category" ></select>
-                    </div> -->
-                    <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
+
+                    <!-- Exemplo do select com busca das informações no banco -->
+                    <!-- Obs: precisa chamar a função inputSelect no arquivo view/assets/js/script, passando o id do campo, rota da api, e o valor this por padrão -->
+                    <input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
+                    <div id="div_category" class="position-absolute w-100 mt-4-5"></div>
+
+                    <!-- <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control"> -->
                   </div>
                 </div>
             </div>
@@ -111,3 +115,4 @@
     </li>
   </ul>
 </nav>
+

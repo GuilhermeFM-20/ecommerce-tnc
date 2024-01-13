@@ -51,20 +51,14 @@ Link: https://book.cakephp.org/phinx/0/en/index.html
 
 ```
 
-*Exemplo do select2 com as informações do banco*
+*Exemplo do select com busca das informações no banco*
 
-Precisa chamar a função searchValues no arquivo `view/assets/js/script_jquery.js`, passando o id do campo e a rota da api 
+Precisa chamar a função inputSelect no arquivo view/assets/js/script, passando o id do campo, rota da api, e o valor this por padrão
 
 ```html
-<div class="form-control pt-1 p-04">
-	<select class="form-control" id="nome_campo" name="nome_campo" ></select>
-</div> 
-
-```
-- Exemplo no arquivo: script_jquery.js
-
-```js
-searchValues('nome_campo','api/load/nome_campo');
+                
+<input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
+<div id="div_category" class="position-absolute w-100 mt-4-5"></div>
 
 ```
 

@@ -6,15 +6,20 @@ use Src\Models\Category;
 
 class CategoryService extends Category{
 
-    public static function listAll($limit = ''){
+    public static function listAll($data){
+        
+        if($data['value'] != ''){
+            $filter = " AND name LIKE '$data[value]%' ";
+        }
 
-        if($limit != ''){
-            $filter = " LIMIT $limit";
+        if($data['limit'] != ''){
+            $filter2 = " LIMIT $data[limit]";
         }
 
         $category = new Category();
 
-        return $category->select("SELECT * FROM category WHERE status IS NULL ORDER BY id DESC  $filter");
+        return $category->select("SELECT * FROM category WHERE status IS NULL $filter ORDER BY id DESC  $filter2");
+
     }
 
     public static function load($id){
