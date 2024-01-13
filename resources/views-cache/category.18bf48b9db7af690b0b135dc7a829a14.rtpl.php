@@ -13,8 +13,8 @@
             <form action="<?php echo htmlspecialchars( $link, ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post">
               <div class="row">
                 <div class="col-md-4">
-                  <div class="input-group input-group-outline my-3 is-filled">
-                    <label class="form-label">Nome</label>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Nome</label>
                     <input type="text" name="name" value="<?php echo htmlspecialchars( $category["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>

@@ -28,7 +28,7 @@ class Controller{
 
 	}
 
-    public function verifyPages($items){
+    public function verifyPages($items,$current_page){
 
         $pages = [];
 
@@ -38,10 +38,32 @@ class Controller{
                 "page"=>$i
 
             ]);
-
         }
 
-        return $pages;
+		$pages = array_chunk($pages, 10);
+
+		foreach($pages as $key => $page){
+
+			$turn = array_search($current_page, array_column($page, 'page'));
+
+			if($turn > -1){
+				$section = $key;
+			}
+
+		}
+
+		$first_page = $pages[$section][0]['page']-1 == 0 ? $current_page : $pages[$section][0]['page']-1 ;
+		$last_page = $pages[$section][9]['page']+1;
+
+		$more = [
+			1 => [ "link" => 'page='.$first_page, "page"=>$first_page],
+			2 => [ "link" => 'page='.$last_page, "page"=>$last_page],
+		];
+
+        return [
+		 'pages' => $pages[$section],
+		 'more' => $more
+		];
 
     }
 

@@ -13,23 +13,23 @@
             <div class="card-body px-0 pb-2">
               <div class="row">
                 <div class="col-md-2">
-                  <div class="input-group input-group-outline my-3 is-filled">
-                    <label class="form-label">Código</label>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Código</label>
                     <input type="text" name="id" value="<?php echo htmlspecialchars( $filter["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-10">
-                  <div class="input-group input-group-outline my-3 is-filled">
-                    <label class="form-label">Nome</label>
+                  <div class="input-group input-group-static mb-4">
+                    <label>Nome</label>
                     <!-- Exemplo do select com as informações do banco -->
                     <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
 
                     <!-- Exemplo do select com busca das informações no banco -->
                     <!-- Obs: precisa chamar a função inputSelect no arquivo view/assets/js/script, passando o id do campo, rota da api, e o valor this por padrão -->
-                    <input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
-                    <div id="div_category" class="position-absolute w-100 mt-4-5"></div>
+                    <!-- <input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
+                    <div id="div_category" class="position-absolute w-100 mt-6"></div> -->
 
-                    <!-- <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control"> -->
+                    <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
             </div>
@@ -87,32 +87,4 @@
     </div>
   </div>
 </div>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="javascript:;" tabindex="-1">
-        <span class="material-icons">
-          keyboard_arrow_left
-        </span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
-    <?php if( isset($_GET['page']) && $_GET['page'] == $value1["page"] ){ ?>
-    <li class="page-item active"><a class="page-link" href="/categoria?<?php echo htmlspecialchars( $value1["link"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["page"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
-    <?php }else{ ?>
-    <li class="page-item"><a class="page-link" href="/categoria?<?php echo htmlspecialchars( $value1["link"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["page"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
-    <?php } ?>
-    <?php } ?>
-    <li class="page-item">
-      <a class="page-link" href="javascript:;">
-        <span class="material-icons">
-          keyboard_arrow_right
-        </span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
+<?php require $this->checkTemplate("pagination");?>

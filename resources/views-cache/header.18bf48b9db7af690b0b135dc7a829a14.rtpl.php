@@ -84,46 +84,6 @@
             <span class="nav-link-text ms-1">Categoria</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " id="Professores" href="/tipo">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Professores</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " id="Alunos" href="/tipo">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Alunos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " id="Visitantes" href="/tipo">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Visitantes</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " id="Funcionario" href="/tipo">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Funcionário</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " id="Relatorios" href="/tipo">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span class="nav-link-text ms-1">Relatórios</span>
-          </a>
-        </li>
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">

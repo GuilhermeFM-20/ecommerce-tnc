@@ -22,13 +22,14 @@ class CategoryController extends Controller{
 
         $pagination = $category->getPages($pages,8);
 
-        $result = $this->verifyPages($pagination);
+        $result = $this->verifyPages($pagination,$pages);
 
         $page = new Page();
 
         $page->setTpl('category_search',[
             'category'=>$pagination['data'],
-            'pages'=>$result,
+            'pages'=>$result['pages'],
+            'more'=>$result['more'],
             'alert' => self::getMessage(),
             'filter' => $_POST,
         ]);

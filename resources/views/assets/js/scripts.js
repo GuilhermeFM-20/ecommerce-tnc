@@ -46,7 +46,9 @@ async function inputSelect(id,route,input){
 
     $('#busca_'+id).empty();
 
-    if(response.status){
+    console.log(response);
+
+    if(response.status && response.data.length > 0){
 
         $('#busca_'+id).attr('class','dropdown-menu show col-12');
         for (const item of response.data) {
@@ -54,8 +56,9 @@ async function inputSelect(id,route,input){
         }
 
     }else{
-
-        $('#busca_'+id).append('Nenhum registro encontrado...');
+        $('#busca_'+id).attr('class','dropdown-menu show col-12');
+        console.log('entrou else');
+        $('#busca_'+id).append('<li class="dropdown-item"> <div class="col-12 d-flex justify-content-between align-items-center pe-auto"> Nenhum registro encontrado...</div></li>');
         
     }
     

@@ -9,7 +9,7 @@ class CategoryService extends Category{
     public static function listAll($data){
         
         if($data['value'] != ''){
-            $filter = " AND name LIKE '$data[value]%' ";
+            $filter = " AND name LIKE '%$data[value]%' ";
         }
 
         if($data['limit'] != ''){
