@@ -115,6 +115,7 @@
 </div>
   
 <!--   Core JS Files   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
 <script src="/resources/views/assets/js/scripts.js"></script>
 <script src="/resources/views/assets/js/scripts_jquery.js"></script>
 <script src="/resources/views/assets/js/core/popper.min.js"></script>
