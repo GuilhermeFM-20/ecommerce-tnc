@@ -18,7 +18,7 @@ class CategoryService extends Category{
 
         $category = new Category();
 
-        return $category->select("SELECT * FROM category WHERE status IS NULL $filter ORDER BY id DESC  $filter2");
+        return $category->select("SELECT * FROM categories WHERE status IS NULL $filter ORDER BY id DESC  $filter2");
 
     }
 
@@ -26,7 +26,7 @@ class CategoryService extends Category{
 
         $category = new Category();
 
-        return $category->select("SELECT * FROM category WHERE status IS NULL AND id = $id");
+        return $category->select("SELECT * FROM categories WHERE status IS NULL AND id = $id");
 
     }
 
@@ -42,7 +42,7 @@ class CategoryService extends Category{
 
         try {
 
-            $category->query("INSERT INTO category VALUES(DEFAULT,:nome,NULL,:created,:updated) ", array(
+            $category->query("INSERT INTO categories VALUES(DEFAULT,:nome,NULL,:created,:updated) ", array(
                 ":nome" => $this->getName(),
                 ":created" => $date->format('Y-m-d H:i'),
                 ":updated" => $date->format('Y-m-d H:i'),
@@ -62,7 +62,7 @@ class CategoryService extends Category{
         $date = new \DateTime();
 
         try {
-            $category->query("UPDATE category SET name = :nome, updated_at = :updated WHERE id = :id", array(
+            $category->query("UPDATE categories SET name = :nome, updated_at = :updated WHERE id = :id", array(
                 ":nome"=>$this->getName(),
                 ":updated" => $date->format('Y-m-d H:i'),
                 ":id"=>$id,
@@ -81,7 +81,7 @@ class CategoryService extends Category{
 
         try {
 
-            $category->query(" UPDATE category SET status = NOW() WHERE id = :id", [
+            $category->query(" UPDATE categories SET status = NOW() WHERE id = :id", [
                 ":id" => $id
             ]);
 
@@ -107,9 +107,9 @@ class CategoryService extends Category{
 
         $category = new Category();
 
-        $results = $category->select(" SELECT * FROM category WHERE status IS NULL $filter ORDER BY id DESC LIMIT $start, $itemsForPages ");
+        $results = $category->select(" SELECT * FROM categories WHERE status IS NULL $filter ORDER BY id DESC LIMIT $start, $itemsForPages ");
 
-        $resultsTotal = $category->select(" SELECT COUNT(*) AS total FROM category WHERE status IS NULL $filter ");
+        $resultsTotal = $category->select(" SELECT COUNT(*) AS total FROM categories WHERE status IS NULL $filter ");
 
         return [
             "data" => $results,

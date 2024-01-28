@@ -47,7 +47,7 @@ Link: https://book.cakephp.org/phinx/0/en/index.html
  
 ```html
 
-<select class="form-control" id="nome_campo" onclick="changeValues('nome_campo','api/load/nome_campo');"></select>
+<select class="form-control" id="nome_campo" onclick="changeValues('nome_campo','/api/load/nome_campo');"></select>
 
 ```
 
@@ -57,7 +57,7 @@ Precisa chamar a função inputSelect no arquivo view/assets/js/script, passando
 
 ```html
                 
-<input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
+<input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','/api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
 <div id="div_category" class="position-absolute w-100 mt-4-5"></div>
 
 ```

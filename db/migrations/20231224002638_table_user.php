@@ -20,6 +20,8 @@ final class TableUser extends AbstractMigration
     public function change(): void
     {
 
+        $this->execute('DROP TABLE IF EXISTS users;');
+
         $users = $this->table('users');
         $users->addColumn('name','string')
               ->addColumn('email','string',['null'=>false])

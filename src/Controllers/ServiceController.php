@@ -19,7 +19,7 @@ class ServiceController extends Controller{
         $response = ['status' => true,
                      'data' => $results];
 
-        echo json_encode($response);
+        return json_encode($response);
 
     }
 

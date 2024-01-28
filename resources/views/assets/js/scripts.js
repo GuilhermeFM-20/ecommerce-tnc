@@ -28,14 +28,14 @@ async function changeValues(id,route,limit){
     
 }
 
-async function inputSelect(id,route,input){
+async function inputSelect(id,route,load,input){
 
     console.log('entrou');
 
     let div = document.getElementById('div_'+id);
 
     div.innerHTML = `<ul class="dropdown-menu hide " style="top: 90%;z-index:99999; border:3px solid #1F8EF3; border-top:1px solid #ced4da;" id="busca_category"></ul>
-    <input type="hidden" name="campo" id="cod_category">`;
+    <input type="hidden" name="${id}" id="cod_category" value="${load}">`;
 
     const data = await fetch(route,{
         method: 'POST',

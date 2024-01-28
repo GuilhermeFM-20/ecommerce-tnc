@@ -77,11 +77,19 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" id="Financeiro" href="/categoria">
+          <a class="nav-link text-white" id="Categoria" href="/categoria">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Categoria</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" id="Financeiro" href="/produto">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">archive</i>
+            </div>
+            <span class="nav-link-text ms-1">Produto</span>
           </a>
         </li>
       </ul>

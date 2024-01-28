@@ -2,6 +2,7 @@
 
 use Src\Controllers\LoginController;
 use Src\Controllers\CategoryController;
+use Src\Controllers\ProductController;
 use Src\Services\Page;
 use Src\Services\UsersService;
 
@@ -25,6 +26,16 @@ $app->group('/categoria', function ($group){
     $group->get('/update/{id}',[CategoryController::class,'viewUpdate']);
     $group->post('/update/{id}',[CategoryController::class,'update']);
     $group->get('/delete/{id}',[CategoryController::class,'delete']);
+});
+
+// Produtos Group
+$app->group('/produto', function ($group){
+    $group->map(['GET','POST'],'',ProductController::class);
+    $group->get('/create',[ProductController::class,'viewCreate']);
+    $group->post('/create',[ProductController::class,'create']);
+    $group->get('/update/{id}',[ProductController::class,'viewUpdate']);
+    $group->post('/update/{id}',[ProductController::class,'update']);
+    $group->get('/delete/{id}',[ProductController::class,'delete']);
 });
 
 
