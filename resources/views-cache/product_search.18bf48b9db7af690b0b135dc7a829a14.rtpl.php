@@ -71,7 +71,7 @@
                       <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
                     </td>
                     <td class="d-flex justify-content-end">
-                      <a href="/product/update/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="px-2"><span
+                      <a href="/produto/update/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="px-2"><span
                           class="badge badge-sm bg-gradient-info">Editar</span></a>
                       <a data-bs-toggle="modal" href="#exampleModal" class="px-2"
                         onclick="cahngeRouteDelete('<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>')"><span

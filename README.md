@@ -41,24 +41,20 @@ Link: https://book.cakephp.org/phinx/0/en/index.html
  `category_search.html`: Página do filtro de busca do módulo, onde será exibido um grid com os registros e um filtro de busca. 
  `category.html`: Será o formulário de cadastro e atualização."
 
-# Select DB no sistema
+# Componentes do select no sistema
 
  *Exemplo do select com as informações do banco*
  
 ```html
 
-<select class="form-control" id="nome_campo" onclick="changeValues('nome_campo','/api/load/nome_campo');"></select>
+	<select-db id="Id do input" label="Label do Input" class="w-100" route="/Rota na api" value="{$value.id_value}"></select-db>
 
 ```
 
 *Exemplo do select com busca das informações no banco*
 
-Precisa chamar a função inputSelect no arquivo view/assets/js/script, passando o id do campo, rota da api, e o valor this por padrão
-
 ```html
-                
-<input type="text" id="category" class="form-control w-100" name="name_campo" onkeydown="inputSelect('category','/api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
-<div id="div_category" class="position-absolute w-100 mt-4-5"></div>
+	<input-select id="Id do input" label="Label do Input" class="w-100" value="{$value.name_value}" value_id="{$value.id_value}" route="Rota na api"></input-select>
 
 ```
 

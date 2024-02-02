@@ -15,7 +15,7 @@
                 <div class="col-md-2">
                   <div class="input-group input-group-static mb-4">
                     <label>Código</label>
-                    <input type="text" name="code" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
+                    <input type="text" name="code" value="<?php echo htmlspecialchars( $product["code"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-5">
@@ -27,19 +27,19 @@
                 <div class="col-md-1">
                   <div class="input-group input-group-static mb-4 pt-3">
                     <label>Cor</label>
-                    <input type="color" name="color" class="form-control pt-1">
+                    <input type="color" name="color" class="form-control pt-1" value="<?php echo htmlspecialchars( $product["color"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="input-group input-group-static mb-4">
                     <label>Valor</label>
-                    <input type="text" name="price" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
+                    <input type="text" name="price" value="<?php echo htmlspecialchars( $product["price"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="input-group input-group-static mb-4">
                     <label>Quantidade</label>
-                    <input type="text" name="amount" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
+                    <input type="text" name="amount" value="<?php echo htmlspecialchars( $product["amount"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
                   </div>
                 </div>
               </div>
@@ -47,43 +47,35 @@
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-2">
                     <label>Imagem</label>
-                    <input type="text" name="image" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
+                    <input type="text" name="image" value="<?php echo htmlspecialchars( $product["image"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                    <label>Categoria</label>
-                    <input type="text" id="category" class="form-control w-100"
-                      onkeydown="inputSelect('category','/api/load/categories',this)" placeholder="Pesquisar..."
-                      onblur="emptySearch(this)">
-                    <div id="div_category" class="position-absolute w-100 mt-4-5"></div>
+                      <input-select id="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $product["category_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value_id="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                    <label>Marca</label>
-                    <input type="text" id="amount" class="form-control w-100"
-                      onkeydown="inputSelect('amount','/api/load/categories','<?php echo htmlspecialchars( $product["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>',this)" placeholder="Pesquisar..."
-                      onblur="emptySearch(this)">
-                    <div id="div_amount" class="position-absolute w-100 mt-4-5"></div>
-                  </div>
-                </div>
-                <div class="col-md-1">
-                  <div class="input-group input-group-static mb-2">
-                    <label>Altura</label>
-                    <input type="text" name="width" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
+                    <!-- <select-db id="teste" label="Marca" class="w-100" route="/api/load/categories" value="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></select-db> -->
                   </div>
                 </div>
                 <div class="col-md-1">
                   <div class="input-group input-group-static mb-2">
                     <label>Largura</label>
-                    <input type="text" name="height" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
+                    <input type="text" name="width" value="<?php echo htmlspecialchars( $product["width"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="input-group input-group-static mb-2">
+                    <label>Altura</label>
+                    <input type="text" name="height" value="<?php echo htmlspecialchars( $product["height"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
                   </div>
                 </div>
                 <div class="col-md-1">
                   <div class="input-group input-group-static mb-2">
                     <label>Peso</label>
-                    <input type="text" name="weight" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
+                    <input type="text" name="weight" value="<?php echo htmlspecialchars( $product["weight"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money">
                   </div>
                 </div>
               </div>
@@ -91,7 +83,7 @@
                 <div class="col-md-12">
                   <div class="input-group input-group-static mb-2">
                     <label>Descrição</label>
-                    <textarea type="text" name="description" value="<?php echo htmlspecialchars( $product["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control money"></textarea>
+                    <textarea type="text" name="description"  class="form-control money"><?php echo htmlspecialchars( $product["description"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
                   </div>
                 </div>
               </div>

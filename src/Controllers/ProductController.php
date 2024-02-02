@@ -55,14 +55,16 @@ class ProductController extends Controller{
 
         UsersService::verifyLogin();
         
-        $product = new CategoryService();
+        $product = new ProductService();
         $page = new Page();
 
         $values = $product->load($args['id']);
+
+       // print_r($values);exit;
     
-        $page->setTpl('category',[
+        $page->setTpl('product',[
             'alert' => self::getMessage(),
-            'category' => $values[0],
+            'product' => $values[0],
             'link' => "/produto/update/$args[id]",
         ]);
 
@@ -72,7 +74,7 @@ class ProductController extends Controller{
 
         UsersService::verifyLogin();
 
-        $product = new CategoryService();
+        $product = new ProductService();
 
         $product->setData($_POST);
 

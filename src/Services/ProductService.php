@@ -26,7 +26,7 @@ class ProductService extends Product{
 
         $product = new Product();
 
-        return $product->select("SELECT * FROM products WHERE status IS NULL AND id = $id");
+        return $product->select("SELECT products.*, categories.name as category_name FROM products,categories WHERE products.status IS NULL AND category_fk = categories.id AND products.id = $id");
 
     }
 
