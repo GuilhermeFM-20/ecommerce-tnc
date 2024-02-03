@@ -47,14 +47,14 @@ Link: https://book.cakephp.org/phinx/0/en/index.html
  
 ```html
 
-	<select-db id="Id do input" label="Label do Input" class="w-100" route="/Rota na api" value="{$value.id_value}"></select-db>
+<select-db id="Id do input" label="Label do Input" class="w-100" route="/Rota na api" value="{$value.id_value}"></select-db>
 
 ```
 
 *Exemplo do select com busca das informações no banco*
 
 ```html
-	<input-select id="Id do input" label="Label do Input" class="w-100" value="{$value.name_value}" value_id="{$value.id_value}" route="Rota na api"></input-select>
+<input-select id="Id do input" label="Label do Input" class="w-100" value="{$value.name_value}" value_id="{$value.id_value}" route="Rota na api"></input-select>
 
 ```
 

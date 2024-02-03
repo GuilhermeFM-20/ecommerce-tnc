@@ -40,19 +40,16 @@ class CategoryService extends Category{
             return false;
         }
 
-        try {
-
-            $category->query("INSERT INTO categories VALUES(DEFAULT,:nome,NULL,:created,:updated) ", array(
+        $result = $category->query("INSERT INTO categories VALUES(DEFAULT,:nome,NULL,:created,:updated) ", array(
                 ":nome" => $this->getName(),
                 ":created" => $date->format('Y-m-d H:i'),
                 ":updated" => $date->format('Y-m-d H:i'),
             ));
 
-            return true;
-        } catch (\Exception $e) {
+         
 
-            return false;
-        }
+        return $result;
+        
     }
 
     public function update($id){
@@ -61,17 +58,16 @@ class CategoryService extends Category{
 
         $date = new \DateTime();
 
-        try {
-            $category->query("UPDATE categories SET name = :nome, updated_at = :updated WHERE id = :id", array(
+        
+        $result = $category->query("UPDATE categories SET name = :nome, updated_at = :updated WHERE id = :id", array(
                 ":nome"=>$this->getName(),
                 ":updated" => $date->format('Y-m-d H:i'),
                 ":id"=>$id,
             ));
-            return true;
-        } catch (\Exception $e) {
+            
 
-            return false;
-        }
+        return $result;
+        
 
     }
 
@@ -79,17 +75,15 @@ class CategoryService extends Category{
 
         $category = new Category();
 
-        try {
+      
 
-            $category->query(" UPDATE categories SET status = NOW() WHERE id = :id", [
+        $result = $category->query(" UPDATE categories SET status = NOW() WHERE id = :id", [
                 ":id" => $id
             ]);
 
-            return true;
-        } catch (\Exception $e) {
+    
 
-            return false;
-        }
+        return $result;
 
     }
 

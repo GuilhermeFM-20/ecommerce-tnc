@@ -2,6 +2,8 @@
 
 namespace Src\Models;
 
+use PDOException;
+
 class Model{
 
     private $conn;
@@ -34,78 +36,73 @@ class Model{
 
     public function query($rawQuery, $params = array(),$analyQuery=0){
 
-		if($analyQuery == 0){
+		try {
 
 			$stmt = $this->conn->prepare($rawQuery);
 
 			$this->setParams($stmt, $params);
 
 			$stmt->execute();
-		
-		}else{
 
-			$stmt = $this->conn->prepare($rawQuery);
+			if($analyQuery){
+				$this->debugSql($stmt);
+				exit;
+			}
 
-			$this->setParams($stmt, $params);
+			return true;
 
-			$stmt->debugDumpParams();
-
+		}catch(PDOException $e){
+			return false;
 		}
 
 	}
 
-	public function debugSql($rawQuery, $params = array()){
+	public function debugSql($stmt){
 
-		if (!empty($params)) {
-			$indexed = $params == array_values($params);
-			foreach($params as $k=>$v) {
-				if(is_object($v)){
-					if($v instanceof \DateTime){ 
-						$v = $v->format('Y-m-d');
-					}else{ 
-						continue;
-					}
-				}elseif(is_string($v)){
-					$v = "'$v'";
-				}elseif($v === null){ 
-					$v = 'NULL';
-				}elseif(is_array($v)){ 
-					$v = implode(',', $v);
-				}
-	
-				if($indexed){
-					$rawQuery = preg_replace('/\?/', $v, $rawQuery, 1);
-				}else{
-					if ($k[0] != ':') $k = ':'.$k; //add leading colon if it was left out
-					$rawQuery = str_replace($k,$v,$rawQuery);
-				}
-			}
-		}
-		echo $rawQuery;
+		ob_start();
+		$stmt->debugDumpParams();
+		$string_sql = ob_get_clean();
+		
+		$sql = substr($string_sql, strpos($string_sql, 'Sent'));
+
+		$sql = substr($sql,0, strpos($sql, 'Params:'));
+
+		echo trim($sql);
 		
 	}
 
 	public function select($rawQuery, $params = array()):array{
 
-		$stmt = $this->conn->prepare($rawQuery);
+		try {
 
-		$this->setParams($stmt, $params);
+			$stmt = $this->conn->prepare($rawQuery);
 
-		$stmt->execute();
+			$this->setParams($stmt, $params);
 
-		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+			$stmt->execute();
+
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+		}catch(PDOException $e){
+			return false;
+		}
 
 	}
 
 	public function numRow($rawQuery,$params = array()){
 
-		$stmt = $this->conn->prepare($rawQuery);
+		try{
+			$stmt = $this->conn->prepare($rawQuery);
 
-		$this->setParams($stmt, $params);
+			$this->setParams($stmt, $params);
 
-		$stmt->execute();
+			$stmt->execute();
 
-		return $stmt->rowCount();
+			return $stmt->rowCount();
+
+		}catch(PDOException $e){
+			return false;
+		}
 
 	}
 
@@ -119,6 +116,32 @@ class Model{
 
     }
 
+	public function valueFormat($value){
+
+		$value = str_replace('.','',$value);
+		$value = str_replace(',','.',$value);
+
+		return $value;
+
+	}
+
+	public function dateFormat($date,$type){
+
+		$obj = new \DateTime();
+
+		// Se o tipo for 2 ele ativa a hora
+		$time = $type == 2 ? 'H:i' : '';
+		
+		$value = date("Y-m-d $time",$date);
+
+		// Se for date for 'now' a função retorna a data de hoje
+		if($date == 'now'){
+			$value = $obj->format("Y-m-d $time");
+		}
+
+		return $value;
+
+	}
 
 }
 

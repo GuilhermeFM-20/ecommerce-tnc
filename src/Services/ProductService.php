@@ -39,52 +39,65 @@ class ProductService extends Product{
         if (!$this->getName()) {
             return false;
         }
+        
+        $result = $product->query("INSERT INTO products VALUES(DEFAULT,:code,:name_prod,:price,:amount,:image_prod,:description_prod,:category,:brand,:width,:height,:weight_prod,:color,:created,:updated,NULL) ", array(
+            ':code' => $this->getCode(),
+            ':name_prod' => $this->getName(),
+            ':price' => $this->getPrice(),
+            ':amount' => $this->getAmount(),
+            ':image_prod' => $this->getImage(),
+            ':description_prod' => $this->getDescription(),
+            ':category' => $this->getCategory(),
+            ':brand' => $this->getBrand(),
+            ':width' => $this->getWidth(),
+            ':height' => $this->getHeight(),
+            ':weight_prod' => $this->getWeight(),
+            ':color' => $this->getColor(),
+            ":created" => $date->format('Y-m-d H:i'),
+            ":updated" => $date->format('Y-m-d H:i'),
+        ));
 
-        try {
+    
 
-            $product->query("INSERT INTO products VALUES(DEFAULT,:code,:name_prod,:price,:amount,:image_prod,:description_prod,:category,:brand,:width,:height,:weight_prod,:color,:created,:updated,NULL) ", array(
-                ':code' => $this->getCode(),
-                ':name_prod' => $this->getName(),
-                ':price' => $this->getPrice(),
-                ':amount' => $this->getAmount(),
-                ':image_prod' => $this->getImage(),
-                ':description_prod' => $this->getDescription(),
-                ':category' => $this->getCategory(),
-                ':brand' => $this->getBrand(),
-                ':width' => $this->getWidth(),
-                ':height' => $this->getHeight(),
-                ':weight_prod' => $this->getWeight(),
-                ':color' => $this->getColor(),
-                ':created' => $this->getCreated(),
-                ':updated' => $this->getUpdated(),
-                ":created" => $date->format('Y-m-d H:i'),
-                ":updated" => $date->format('Y-m-d H:i'),
-            ));
-
-            return true;
-        } catch (\Exception $e) {
-
-            return false;
-        }
+        return $result;
+        
     }
 
     public function update($id){
 
         $product = new Product();
 
-        $date = new \DateTime();
-
-        try {
-            $product->query("UPDATE products SET name = :nome, updated_at = :updated WHERE id = :id", array(
-                ":nome"=>$this->getName(),
-                ":updated" => $date->format('Y-m-d H:i'),
-                ":id"=>$id,
+        $result = $product->query("UPDATE products SET 
+                code = :code,
+                name = :name_prod,
+                price = :price,
+                amount = :amount,
+                image = :image_prod,
+                description = :description_prod,
+                category_fk = :category,
+                brand_fk = :brand,
+                width = :width,
+                height = :height,
+                weight = :weight_prod,
+                color = :color,
+                updated_at = :updated WHERE id = :id", array(
+                ':code' => $this->getCode(),
+                ':name_prod' => $this->getName(),
+                ':price' => $this->valueFormat($this->getPrice()),
+                ':amount' => $this->valueFormat($this->getAmount()),
+                ':image_prod' => '2',
+                ':description_prod' => $this->getDescription(),
+                ':category' => (int)$this->getCategory(),
+                ':brand' => $this->getBrand(),
+                ':width' => $this->valueFormat($this->getWidth()),
+                ':height' => $this->valueFormat($this->getHeight()),
+                ':weight_prod' => $this->valueFormat($this->getWeight()),
+                ':color' => $this->getColor(),
+                ":updated" => $this->dateFormat('now',2),
+                ":id" => $id
             ));
-            return true;
-        } catch (\Exception $e) {
-
-            return false;
-        }
+          
+        return $result;
 
     }
 
@@ -92,17 +105,13 @@ class ProductService extends Product{
 
         $product = new Product();
 
-        try {
-
-            $product->query(" UPDATE products SET status = NOW() WHERE id = :id", [
+        
+        $result = $product->query(" UPDATE products SET status = NOW() WHERE id = :id", [
                 ":id" => $id
             ]);
 
-            return true;
-        } catch (\Exception $e) {
-
-            return false;
-        }
+        return $result;
+        
 
     }
 

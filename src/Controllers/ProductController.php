@@ -60,7 +60,7 @@ class ProductController extends Controller{
 
         $values = $product->load($args['id']);
 
-       // print_r($values);exit;
+       //print_r($values);exit;
     
         $page->setTpl('product',[
             'alert' => self::getMessage(),
@@ -76,13 +76,15 @@ class ProductController extends Controller{
 
         $product = new ProductService();
 
+        //print_r($_POST);exit;
+
         $product->setData($_POST);
 
         $result = $product->update($args['id']);
 
         if(!$result){
             self::setMessage('Preencha todos os campos.','warning');
-            Controller::redirect('/produto/create');
+            Controller::redirect('/produto/update/'.$args['id']);
         }
 
         self::setMessage('Registro atualizado com sucesso.','success');
