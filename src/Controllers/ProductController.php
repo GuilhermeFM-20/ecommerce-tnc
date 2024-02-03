@@ -124,7 +124,7 @@ class ProductController extends Controller{
 
         if(!$result){
             self::setMessage('Não foi possível excluir o registro!','warning');
-            Controller::redirect('/produto/create');
+            Controller::redirect('/produto');
         }
 
         self::setMessage('Registro excluído com sucesso.','success');

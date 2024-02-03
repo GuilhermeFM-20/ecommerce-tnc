@@ -73,9 +73,7 @@
                     <td class="d-flex justify-content-end">
                       <a href="/produto/update/{$value.id}" class="px-2"><span
                           class="badge badge-sm bg-gradient-info">Editar</span></a>
-                      <a data-bs-toggle="modal" href="#exampleModal" class="px-2"
-                        onclick="cahngeRouteDelete('{$value.id}')"><span
-                          class="badge badge-sm bg-gradient-danger">Excluir</span></a>
+                      <button-delete route="/produto/delete/{$value.id}" id="{$value.id}"></button-delete>
                     </td>
                   </tr>
                   {/loop}

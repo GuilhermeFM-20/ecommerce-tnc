@@ -1,5 +1,4 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><?php require $this->checkTemplate("alert_float");?>
-<?php require $this->checkTemplate("modal");?>
 
 <footer class="footer py-4  ">
     <div class="container-fluid">
@@ -121,6 +120,7 @@
 <script src="/resources/views/assets/js/scripts_jquery.js"></script>
 <script src="/resources/views/assets/js/Select.js"></script>
 <script src="/resources/views/assets/js/InputSelect.js"></script>
+<script src="/resources/views/assets/js/buttonDelete.js"></script>
 <script src="/resources/views/assets/js/core/popper.min.js"></script>
 <script src="/resources/views/assets/js/core/bootstrap.min.js"></script>
 <script src="/resources/views/assets/js/plugins/perfect-scrollbar.min.js"></script>

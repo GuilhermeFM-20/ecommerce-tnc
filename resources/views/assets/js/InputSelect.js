@@ -9,7 +9,7 @@ class InputSelect extends HTMLElement {
       const label = this.getAttribute('label') || 'Default Label';
       const id = this.getAttribute('id') || 'default-id';
       const value = this.getAttribute('value') || '';
-      const value_id = this.getAttribute('value_id') || '';
+      const value_id = this.getAttribute('value-id') || '';
       const route = this.getAttribute('route') || '';
 
       this.innerHTML = `
