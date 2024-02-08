@@ -1,5 +1,5 @@
 <div class="container-fluid py-1">
-  Página/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Categoria</h7>
+  Página/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Marca</h7>
 </div>
 <div class="container-fluid py-1">
   <div class="row">
@@ -9,7 +9,7 @@
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
             <h6 class="text-white text-capitalize ps-3">Filtro de Busca</h6>
           </div>
-          <form method="post" action="/categoria">
+          <form method="post" action="/marca">
             <div class="card-body px-0 pb-2">
               <div class="row">
                 <div class="col-md-2">
@@ -40,7 +40,7 @@
                     data-target="infoToast">Busca</button>
                 </div>
                 <div class="col-lg-2 col-sm-6 col-12">
-                  <a href="/categoria/create"><button class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button"
+                  <a href="/marca/create"><button class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button"
                       data-target="successToast">Cadastrar</button></a>
                 </div>
               </div>
@@ -62,7 +62,7 @@
                 </tr>
               </thead>
               <tbody>
-                {loop="$category"}
+                {loop="$brand"}
                 <tr>
                   <td>
                     <p class="text-xs font-weight-bold mb-0">{$value.id}</p>
@@ -71,9 +71,9 @@
                     <p class="text-xs font-weight-bold mb-0">{$value.name}</p>
                   </td>
                   <td class="d-flex justify-content-end">
-                    <a href="/categoria/update/{$value.id}" class="px-2"><span
+                    <a href="/marca/update/{$value.id}" class="px-2"><span
                         class="badge badge-sm bg-gradient-info">Editar</span></a>
-                    <button-delete route="/categoria/delete/{$value.id}" id="{$value.id}"></button-delete>
+                    <button-delete route="/marca/delete/{$value.id}" id="{$value.id}"></button-delete>
                   </td>
                 </tr>
                 {/loop}

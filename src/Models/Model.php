@@ -34,7 +34,7 @@ class Model{
 
 	}
 
-    public function query($rawQuery, $params = array(),$analyQuery=0){
+    public function query($rawQuery, $params = array(),$analyQuery = false){
 
 		try {
 
@@ -46,7 +46,6 @@ class Model{
 
 			if($analyQuery){
 				$this->debugSql($stmt);
-				exit;
 			}
 
 			return true;
@@ -68,10 +67,11 @@ class Model{
 		$sql = substr($sql,0, strpos($sql, 'Params:'));
 
 		echo trim($sql);
+		exit;
 		
 	}
 
-	public function select($rawQuery, $params = array()):array{
+	public function select($rawQuery, $params = array(),$analyQuery = false){
 
 		try {
 
@@ -80,6 +80,10 @@ class Model{
 			$this->setParams($stmt, $params);
 
 			$stmt->execute();
+
+			if($analyQuery){
+				$this->debugSql($stmt);	
+			}
 
 			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 

@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                    <!-- <select-db id="teste" label="Marca" class="w-100" route="/api/load/categories" value="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></select-db> -->
+                    <input-select id="brand" label="Marca" class="w-100" value="<?php echo htmlspecialchars( $product["brand_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/brand"></input-select>
                   </div>
                 </div>
                 <div class="col-md-1">
