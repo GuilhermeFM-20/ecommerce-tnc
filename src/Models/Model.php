@@ -109,8 +109,10 @@ class Model{
 	public function setData($data = array()){
 
         foreach($data as $key => $value){
-
-            $this->{"set".$key}($value);
+			
+			if(method_exists($this, "set".$key)){
+            	$this->{"set".$key}($value);
+			}
 
         }
 

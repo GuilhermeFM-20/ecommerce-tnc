@@ -73,9 +73,7 @@
                   <td class="d-flex justify-content-end">
                     <a href="/categoria/update/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="px-2"><span
                         class="badge badge-sm bg-gradient-info">Editar</span></a>
-                    <a data-bs-toggle="modal" href="#exampleModal" class="px-2"
-                      onclick="cahngeRouteDelete('<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>')"><span
-                        class="badge badge-sm bg-gradient-danger">Excluir</span></a>
+                    <button-delete route="/categoria/delete/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" id="<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" w></button-delete>
                   </td>
                 </tr>
                 <?php } ?>

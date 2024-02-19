@@ -1,8 +1,4 @@
-function cahngeRouteDelete(id){
-    
-    document.getElementById('link_delete').href = '/categoria/delete/'+id;
-    
-}
+
 
 async function changeValues(id,route,valueSelected){
     
@@ -14,7 +10,7 @@ async function changeValues(id,route,valueSelected){
 
     const response = await data.json();
 
-    let select = document.getElementById('input_'+id);
+    let select = document.getElementById(id);
 
     select.innerHTML = '';
 
@@ -62,8 +58,10 @@ async function inputSelect(id,route,input){
 }
 
 function searchValues(input,id,name){
+
+    console.log('cod_'+input);
    
-    let text = document.getElementById('input_'+input);  
+    let text = document.getElementById(input);  
     let hidden = document.getElementById('cod_'+input);
     let busca = document.getElementById('busca_'+input);
 
@@ -82,5 +80,12 @@ function emptySearch(input){
         document.getElementById(input.id).value = '';
     }
 
+}
+
+function emptyHidden(input){
+  
+    let hidden = document.getElementById('cod_'+input.id);
+    hidden.value = '';
+    
 }
 

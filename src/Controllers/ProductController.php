@@ -2,6 +2,7 @@
 
 namespace Src\Controllers;
 
+use Src\Models\Category;
 use Src\Models\Product;
 use Src\Services\Page;
 use Src\Services\CategoryService;
@@ -11,8 +12,6 @@ use Src\Services\UsersService;
 class ProductController extends Controller{
     
     public function __invoke(){
-
-        //print_r($_POST);exit;
 
         UsersService::verifyLogin();
 
@@ -27,6 +26,7 @@ class ProductController extends Controller{
         $result = $this->verifyPages($pagination,$pages);
 
         $page = new Page();
+
 
         $page->setTpl('product_search',[
             'product'=>$pagination['data'],
@@ -56,15 +56,18 @@ class ProductController extends Controller{
         UsersService::verifyLogin();
         
         $product = new ProductService();
+        $category = new CategoryService();
+
         $page = new Page();
 
         $values = $product->load($args['id']);
 
-       //print_r($values);exit;
+        $values_category = $category->load($values[0]['category_fk']);
     
         $page->setTpl('product',[
             'alert' => self::getMessage(),
             'product' => $values[0],
+            'category' => $values_category[0],
             'link' => "/produto/update/$args[id]",
         ]);
 
@@ -75,8 +78,6 @@ class ProductController extends Controller{
         UsersService::verifyLogin();
 
         $product = new ProductService();
-
-        //print_r($_POST);exit;
 
         $product->setData($_POST);
 
@@ -93,8 +94,6 @@ class ProductController extends Controller{
     }
 
     public function create(){
-        
-        //print_r($_POST);exit;
 
         UsersService::verifyLogin();
 
@@ -118,7 +117,7 @@ class ProductController extends Controller{
 
         UsersService::verifyLogin();
 
-        $product = new CategoryService();
+        $product = new ProductService();
 
         $result = $product->delete($args['id']);
 

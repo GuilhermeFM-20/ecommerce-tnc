@@ -11,8 +11,6 @@ class ServiceController extends Controller{
 
     public function loadCategories(ServerRequestInterface $request, ResponseInterface $response, array $args){
 
-       // UsersService::verifyLogin();
-
         $data = $request->getParsedBody();
 
         $categories = new CategoryService();
@@ -27,8 +25,6 @@ class ServiceController extends Controller{
     }
 
     public function loadUnique(ServerRequestInterface $request, ResponseInterface $response, array $args){
-
-       // UsersService::verifyLogin();
 
         $categories = new CategoryService();
 

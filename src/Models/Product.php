@@ -137,11 +137,9 @@ class Product extends Model{
         return $this->image;
     }
 
-    public function setImage($image): self
+    public function setImage($image)
     {
         $this->image = $image;
-
-        return $this;
     }
 }
 

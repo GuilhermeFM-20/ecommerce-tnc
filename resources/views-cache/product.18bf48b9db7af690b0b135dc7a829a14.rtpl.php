@@ -52,12 +52,12 @@
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                      <input-select id="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $product["category_name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>
+                      <input-select id-input="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $category["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $category["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                    <!-- <select-db id="teste" label="Marca" class="w-100" route="/api/load/categories" value="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></select-db> -->
+                    <!-- <select-db id-input="teste" label="Marca" class="w-100" route="/api/load/categories" value="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></select-db> -->
                   </div>
                 </div>
                 <div class="col-md-1">
@@ -83,7 +83,7 @@
                 <div class="col-md-12">
                   <div class="input-group input-group-static mb-2">
                     <label>Descrição</label>
-                    <textarea type="text" name="description"  class="form-control" ><?php echo htmlspecialchars( $product["description"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
+                    <textarea type="text" name="description"  class="form-control"  rows="5"><?php echo htmlspecialchars( $product["description"], ENT_COMPAT, 'UTF-8', FALSE ); ?></textarea>
                   </div>
                 </div>
               </div>

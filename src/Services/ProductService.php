@@ -26,7 +26,7 @@ class ProductService extends Product{
 
         $product = new Product();
 
-        return $product->select("SELECT products.*, categories.name as category_name FROM products,categories WHERE products.status IS NULL AND category_fk = categories.id AND products.id = $id");
+        return $product->select("SELECT * FROM products WHERE status IS NULL AND id = $id");
 
     }
 
@@ -57,8 +57,6 @@ class ProductService extends Product{
             ":updated" => $date->format('Y-m-d H:i'),
         ));
 
-    
-
         return $result;
         
     }
@@ -85,7 +83,7 @@ class ProductService extends Product{
                 ':name_prod' => $this->getName(),
                 ':price' => $this->valueFormat($this->getPrice()),
                 ':amount' => $this->valueFormat($this->getAmount()),
-                ':image_prod' => '2',
+                ':image_prod' => $this->getImage(),
                 ':description_prod' => $this->getDescription(),
                 ':category' => (int)$this->getCategory(),
                 ':brand' => $this->getBrand(),
@@ -125,9 +123,14 @@ class ProductService extends Product{
             $filter .= " AND name LIKE '%".$this->getName()."%'";
         }
 
+        if($this->getCategory()){
+            $filter .= " AND category_fk = ".$this->getCategory();
+        }
+
         $start = ($page - 1) * $itemsForPages;
 
         $product = new Product();
+
 
         $results = $product->select(" SELECT * FROM products WHERE status IS NULL $filter ORDER BY id DESC LIMIT $start, $itemsForPages ");
 
