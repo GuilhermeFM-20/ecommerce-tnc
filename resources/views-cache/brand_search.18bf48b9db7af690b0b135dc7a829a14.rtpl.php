@@ -1,5 +1,5 @@
-<div class="container-fluid py-1">
-  Página/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Categoria</h7>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="container-fluid py-1">
+  Página/<h7 class="font-weight-bolder mb-0" style="color: aliceblue;" id="titile">Marca</h7>
 </div>
 <div class="container-fluid py-1">
   <div class="row">
@@ -9,19 +9,27 @@
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
             <h6 class="text-white text-capitalize ps-3">Filtro de Busca</h6>
           </div>
-          <form method="post" action="/categoria">
+          <form method="post" action="/marca">
             <div class="card-body px-0 pb-2">
               <div class="row">
                 <div class="col-md-2">
                   <div class="input-group input-group-static mb-4">
                     <label>Código</label>
-                    <input type="text" name="id" value="{$filter.id}" class="form-control">
+                    <input type="text" name="id" value="<?php echo htmlspecialchars( $filter["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-10">
                   <div class="input-group input-group-static mb-4">
                     <label>Nome</label>
-                    <input type="text" name="name" value="{$filter.name}" class="form-control">
+                    <!-- Exemplo do select com as informações do banco -->
+                    <!-- <select class="form-control" id="category2" onclick="changeValues('category2','api/load/categories');"></select> -->
+
+                    <!-- Exemplo do select com busca das informações no banco -->
+                    <!-- Obs: precisa chamar a função inputSelect no arquivo view/assets/js/script, passando o id do campo, rota da api, e o valor this por padrão -->
+                    <!-- <input type="text" id="category" class="form-control w-100" onkeydown="inputSelect('category','api/load/categories',this)" placeholder="Pesquisar..." onblur="emptySearch(this)">
+                    <div id="div_category" class="position-absolute w-100 mt-6"></div> -->
+
+                    <input type="text" name="name" value="<?php echo htmlspecialchars( $filter["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="form-control">
                   </div>
                 </div>
             </div>
@@ -32,7 +40,7 @@
                     data-target="infoToast">Busca</button>
                 </div>
                 <div class="col-lg-2 col-sm-6 col-12">
-                  <a href="/categoria/create"><button class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button"
+                  <a href="/marca/create"><button class="btn bg-gradient-success w-100 mb-0 toast-btn" type="button"
                       data-target="successToast">Cadastrar</button></a>
                 </div>
               </div>
@@ -54,21 +62,21 @@
                 </tr>
               </thead>
               <tbody>
-                {loop="$category"}
+                <?php $counter1=-1;  if( isset($brand) && ( is_array($brand) || $brand instanceof Traversable ) && sizeof($brand) ) foreach( $brand as $key1 => $value1 ){ $counter1++; ?>
                 <tr>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0">{$value.id}</p>
+                    <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
                   </td>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0">{$value.name}</p>
+                    <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
                   </td>
                   <td class="d-flex justify-content-end">
-                    <a href="/categoria/update/{$value.id}" class="px-2"><span
+                    <a href="/marca/update/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="px-2"><span
                         class="badge badge-sm bg-gradient-info">Editar</span></a>
-                    <button-delete route="/categoria/delete/{$value.id}" id="{$value.id}"></button-delete>
+                    <button-delete route="/marca/delete/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" id="<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></button-delete>
                   </td>
                 </tr>
-                {/loop}
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -77,4 +85,4 @@
     </div>
   </div>
 </div>
-{include="pagination"}
+<?php require $this->checkTemplate("pagination");?>

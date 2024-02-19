@@ -52,12 +52,12 @@
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                      <input-select id-input="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $category["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $category["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>
+                    <input-select id-input="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $category["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $category["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-3">
-                    <!-- <select-db id-input="teste" label="Marca" class="w-100" route="/api/load/categories" value="<?php echo htmlspecialchars( $product["category_fk"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"></select-db> -->
+                    <input-select id-input="brand" label="Marca" class="w-100" value="<?php echo htmlspecialchars( $brand["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $brand["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/brand"></input-select>
                   </div>
                 </div>
                 <div class="col-md-1">

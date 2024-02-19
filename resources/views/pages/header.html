@@ -85,6 +85,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-white" id="Marca" href="/marca">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">edit</i>
+            </div>
+            <span class="nav-link-text ms-1">Marca</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-white" id="Financeiro" href="/produto">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">archive</i>
@@ -119,7 +127,15 @@
               </a>
             </li> -->
 
-
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
             <li class="nav-item px-3 d-flex align-items-center">
               <a href="/logout" class="text-body p-0">
                 <i class="fa fa-sign-out cursor-pointer"></i>
@@ -168,6 +184,7 @@
                     </div>
                   </a>
                 </li>
+                
                 <li>
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">

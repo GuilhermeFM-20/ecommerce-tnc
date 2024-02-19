@@ -26,7 +26,14 @@
                 </div>
                 <div class="col-md-3">
                   <div class="input-group input-group-static mb-4">
-                    <input-select id-input="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $filter["name_category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $filter["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>                  </div>
+                    <input-select id-input="category" label="Categoria" class="w-100" value="<?php echo htmlspecialchars( $filter["name_category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                      value-id="<?php echo htmlspecialchars( $filter["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/categories"></input-select>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group input-group-static mb-3">
+                    <input-select id-input="brand" label="Marca" class="w-100" value="<?php echo htmlspecialchars( $filter["name_brand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" value-id="<?php echo htmlspecialchars( $filter["brand"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" route="/api/load/brand"></input-select>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -57,19 +64,19 @@
               </thead>
               <tbody>
                 <?php $counter1=-1;  if( isset($product) && ( is_array($product) || $product instanceof Traversable ) && sizeof($product) ) foreach( $product as $key1 => $value1 ){ $counter1++; ?>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
-                    </td>
-                    <td class="d-flex justify-content-end">
-                      <a href="/produto/update/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="px-2"><span
-                          class="badge badge-sm bg-gradient-info">Editar</span></a>
-                      <button-delete route="/produto/delete/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" id="<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" w></button-delete>
-                    </td>
-                  </tr>
+                <tr>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0"><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+                  </td>
+                  <td class="d-flex justify-content-end">
+                    <a href="/produto/update/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="px-2"><span
+                        class="badge badge-sm bg-gradient-info">Editar</span></a>
+                    <button-delete route="/produto/delete/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" id="<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" w></button-delete>
+                  </td>
+                </tr>
                 <?php } ?>
               </tbody>
             </table>

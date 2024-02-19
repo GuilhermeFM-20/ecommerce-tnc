@@ -4,6 +4,7 @@ namespace Src\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Src\Services\BrandService;
 use Src\Services\CategoryService;
 use Src\Services\UsersService;
 
@@ -23,6 +24,21 @@ class ServiceController extends Controller{
         return json_encode($response);
 
     }
+
+    public function loadBrand(ServerRequestInterface $request, ResponseInterface $response, array $args){
+ 
+         $data = $request->getParsedBody();
+ 
+         $brand = new BrandService();
+ 
+         $results = $brand->listAll($data);
+         
+         $response = ['status' => true,
+                      'data' => $results];
+ 
+         return json_encode($response);
+ 
+     }
 
     public function loadUnique(ServerRequestInterface $request, ResponseInterface $response, array $args){
 

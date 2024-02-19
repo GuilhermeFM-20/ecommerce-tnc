@@ -2,6 +2,7 @@
 
 use Src\Controllers\LoginController;
 use Src\Controllers\CategoryController;
+use Src\Controllers\BrandController;
 use Src\Controllers\ProductController;
 use Src\Services\Page;
 use Src\Services\UsersService;
@@ -36,6 +37,16 @@ $app->group('/produto', function ($group){
     $group->get('/update/{id}',[ProductController::class,'viewUpdate']);
     $group->post('/update/{id}',[ProductController::class,'update']);
     $group->get('/delete/{id}',[ProductController::class,'delete']);
+});
+
+// Brands Group
+$app->group('/marca', function ($group){
+    $group->map(['GET','POST'],'',BrandController::class);
+    $group->get('/create',[BrandController::class,'viewCreate']);
+    $group->post('/create',[BrandController::class,'create']);
+    $group->get('/update/{id}',[BrandController::class,'viewUpdate']);
+    $group->post('/update/{id}',[BrandController::class,'update']);
+    $group->get('/delete/{id}',[BrandController::class,'delete']);
 });
 
 

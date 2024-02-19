@@ -18,7 +18,7 @@ class InputSelect extends HTMLElement {
       onkeydown="inputSelect('${id_input}','${route}',this)" placeholder="Pesquisar..."
       onblur="emptySearch(this)" autocomplete="off" oninput="emptyHidden(this)" name="name_${id_input}" value="${value}">
       <ul class="dropdown-menu hide " style="top: 90%;z-index:99999; border:3px solid #1F8EF3; border-top:1px solid #ced4da;" id="busca_${id_input}"></ul>
-      <input type="hidden" name="${id_input}" id="cod_category" value="${value_id}">
+      <input type="hidden" name="${id_input}" id="cod_${id_input}" value="${value_id}">
             `;
     }
     

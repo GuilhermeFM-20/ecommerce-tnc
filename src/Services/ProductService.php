@@ -34,8 +34,6 @@ class ProductService extends Product{
 
         $product = new Product();
 
-        $date = new \DateTime();
-
         if (!$this->getName()) {
             return false;
         }
@@ -53,8 +51,8 @@ class ProductService extends Product{
             ':height' => $this->getHeight(),
             ':weight_prod' => $this->getWeight(),
             ':color' => $this->getColor(),
-            ":created" => $date->format('Y-m-d H:i'),
-            ":updated" => $date->format('Y-m-d H:i'),
+            ":created" => $this->dateFormat('now',2),
+            ":updated" => $this->dateFormat('now',2),
         ));
 
         return $result;
@@ -125,6 +123,10 @@ class ProductService extends Product{
 
         if($this->getCategory()){
             $filter .= " AND category_fk = ".$this->getCategory();
+        }
+
+        if($this->getBrand()){
+            $filter .= " AND brand_fk = ".$this->getBrand();
         }
 
         $start = ($page - 1) * $itemsForPages;

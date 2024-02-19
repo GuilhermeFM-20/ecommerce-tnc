@@ -2,15 +2,11 @@
 
 namespace Src\Controllers;
 
-use Src\Models\Category;
-use Src\Models\Product;
 use Src\Services\Page;
-use Src\Services\CategoryService;
-use Src\Services\ProductService;
-use Src\Services\UsersService;
 use Src\Services\BrandService;
+use Src\Services\UsersService;
 
-class ProductController extends Controller{
+class BrandController extends Controller{
     
     public function __invoke(){
 
@@ -18,19 +14,18 @@ class ProductController extends Controller{
 
         $pages = isset($_GET['page']) ? $_GET['page'] : 1;
 
-        $product = new ProductService();
+        $brand = new BrandService();
 
-        $product->setData($_POST);
+        $brand->setData($_POST);
 
-        $pagination = $product->getPages($pages,8);
+        $pagination = $brand->getPages($pages,8);
 
         $result = $this->verifyPages($pagination,$pages);
 
         $page = new Page();
 
-
-        $page->setTpl('product_search',[
-            'product'=>$pagination['data'],
+        $page->setTpl('brand_search',[
+            'brand'=>$pagination['data'],
             'pages'=>$result['pages'],
             'more'=>$result['more'],
             'alert' => self::getMessage(),
@@ -45,9 +40,9 @@ class ProductController extends Controller{
 
         $page = new Page();
     
-        $page->setTpl('product',[
+        $page->setTpl('brand',[
             'alert' => self::getMessage(),
-            'link' => '/produto/create',
+            'link' => '/marca/create',
         ]);
 
     }
@@ -56,26 +51,15 @@ class ProductController extends Controller{
 
         UsersService::verifyLogin();
         
-        $product = new ProductService();
-        $category = new CategoryService();
         $brand = new BrandService();
-
         $page = new Page();
 
-        $values = $product->load($args['id']);
-
-        $values_category = $category->load($values[0]['category_fk']);
-        //print_r($values[0]);exit;
-        $values_brand = $brand->load($values[0]['brand_fk']);
-        
-        //print_r($values_brand);
-
-        $page->setTpl('product',[
+        $values = $brand->load($args['id']);
+    
+        $page->setTpl('brand',[
             'alert' => self::getMessage(),
-            'product' => $values[0],
-            'category' => $values_category[0],
-            'brand' => $values_brand[0],
-            'link' => "/produto/update/$args[id]",
+            'brand' => $values[0],
+            'link' => "/marca/update/$args[id]",
         ]);
 
     }
@@ -84,39 +68,39 @@ class ProductController extends Controller{
 
         UsersService::verifyLogin();
 
-        $product = new ProductService();
+        $brand = new BrandService();
 
-        $product->setData($_POST);
+        $brand->setData($_POST);
 
-        $result = $product->update($args['id']);
+        $result = $brand->update($args['id']);
 
         if(!$result){
             self::setMessage('Preencha todos os campos.','warning');
-            Controller::redirect('/produto/update/'.$args['id']);
+            Controller::redirect('/marca/create');
         }
 
         self::setMessage('Registro atualizado com sucesso.','success');
-        Controller::redirect('/produto');
+        Controller::redirect('/marca');
 
     }
 
     public function create(){
-
+        
         UsersService::verifyLogin();
 
-        $product = new ProductService();
+        $brand = new BrandService();
 
-        $product->setData($_POST);
+        $brand->setData($_POST);
 
-        $result = $product->save();
+        $result = $brand->save();
 
         if(!$result){
             self::setMessage('Preencha todos os campos.','warning');
-            Controller::redirect('/produto/create');
+            Controller::redirect('/marca/create');
         }
 
         self::setMessage('Registro cadastrado com sucesso.','success');
-        Controller::redirect('/produto');
+        Controller::redirect('/marca');
 
     }
 
@@ -124,17 +108,17 @@ class ProductController extends Controller{
 
         UsersService::verifyLogin();
 
-        $product = new ProductService();
+        $brand = new BrandService();
 
-        $result = $product->delete($args['id']);
+        $result = $brand->delete($args['id']);
 
         if(!$result){
             self::setMessage('Não foi possível excluir o registro!','warning');
-            Controller::redirect('/produto');
+            Controller::redirect('/marca/create');
         }
 
         self::setMessage('Registro excluído com sucesso.','success');
-        Controller::redirect('/produto');
+        Controller::redirect('/marca');
 
     }
 
